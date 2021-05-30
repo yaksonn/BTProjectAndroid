@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="4dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/backButtonImageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.2"
+            android:onClick="addQuestionActivityButtonClicks"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/createAndEditQuestionTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_weight="3"
+            android:text="@string/add_question"
+            android:textColor="@color/title_text_color"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_edittext"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <EditText
+                    android:id="@+id/entryQuestionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:hint="@string/question"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:maxLines="10"
+                    android:padding="4dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edittext">
+
+                <EditText
+                    android:id="@+id/optAEditText"
+                    style="@style/EdittextQuestionBackground"
+                    android:background="@null"
+                    android:hint="@string/optA"
+                    android:inputType="textMultiLine" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edittext">
+
+                <EditText
+                    android:id="@+id/optBEditText"
+                    style="@style/EdittextQuestionBackground"
+                    android:background="@null"
+                    android:hint="@string/optB"
+                    android:inputType="textMultiLine" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edittext">
+
+                <EditText
+                    android:id="@+id/optCEditText"
+                    style="@style/EdittextQuestionBackground"
+                    android:background="@null"
+                    android:hint="@string/optC"
+                    android:inputType="textMultiLine" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_edittext">
+
+                <EditText
+                    android:id="@+id/optDEditText"
+                    style="@style/EdittextQuestionBackground"
+                    android:background="@null"
+                    android:hint="@string/optD"
+                    android:inputType="textMultiLine" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/answerTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/answer" />
+
+                <RadioGroup
+                    android:id="@+id/optionsRadioButtons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/optARadioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="@string/optA" />
+
+                    <RadioButton
+                        android:id="@+id/optBRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/optB" />
+
+                    <RadioButton
+                        android:id="@+id/optCRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/optC" />
+
+                    <RadioButton
+                        android:id="@+id/optDRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/optD" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/saveQuestionButton"
+                style="@style/BlueWhiteButtonWithBlueBorder"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:onClick="addQuestionActivityButtonClicks"
+                android:text="@string/add_question" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

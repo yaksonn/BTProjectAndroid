@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">BtAndroidProject</string>
+    <string name="hint_mail">E mail</string>
+    <string name="hint_password">Şifre</string>
+    <string name="btn_login">Giriş Yap</string>
+    <string name="register">Kayıt ol</string>
+    <string name="logOut">Çıkış</string>
+    <string name="edit">Düzenle</string>
+    <string name="login_error_email">Lütfen kayıt olduğunuz e-posta adresini girin</string>
+    <string name="blank_field_error">Lütfen tüm alanları eksiksiz doldurunuz.</string>
+
+    <string name="answer">Cevap</string>
+    <string name="question">Bir soru girin</string>
+    <string name="add_question">Soruyu Ekle</string>
+    <string name="edit_question">Soruyu Düzenle</string>
+    <string name="get_question">Sorular</string>
+    <string name="create_exam">Sınav Oluştur</string>
+    <string name="exam_settings">Ayarlar</string>
+    <string name="optA">A</string>
+    <string name="optB">B</string>
+    <string name="optC">C</string>
+    <string name="optD">D</string>
+
+    <string name="question_optA">A) </string>
+    <string name="question_optB">B) </string>
+    <string name="question_optC">C) </string>
+    <string name="question_optD">D) </string>
+    <string name="correct_answer">Doğru Cevap :  </string>
+
+    <string name="dialog_delete_message">Silmek istediğinize emin misiniz?</string>
+    <string name="delete">Sil</string>
+    <string name="cancel">İptal</string>
+
+
+    <string name="hint_password_second">Şifre (Tekrar) *</string>
+    <string name="hint_namesurname">Ad Soyad *</string>
+    <string name="hint_phone_number">Telefon Numarası (5xxxxxxxxx)</string>
+    <string name="signup_error_phone">Lütfen geçerli bir telefon numarası giriniz</string>
+    <string name="signup_error_name_surname">Lütfen geçerli bir ad soyad giriniz</string>
+    <string name="signup_error_email">Geçerli e-posta adresi girin</string>
+    <string name="signup_error_password_repeat">Şifren ile uyuşmuyor</string>
+</resources>

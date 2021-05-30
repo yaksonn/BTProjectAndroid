@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/bgBlueButtonPressedColor" android:state_pressed="true">
+        <shape>
+
+            <padding android:bottom="2dp" android:left="2dp" android:right="2dp" android:top="2dp" />
+            <corners android:radius="4dp" />
+            <stroke android:width="3dp" android:color="@color/bgBlueButtonPressedColor" />
+
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <stroke android:width="3dp" android:color="@color/bgBlueButtonColor" />
+            <solid android:color="@color/white" />
+            <corners android:radius="6dp" />
+            <padding android:bottom="4dp" android:left="4dp" android:right="4dp" android:top="4dp" />
+        </shape>
+    </item>
+</selector>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="TextInputLayoutWithPrimaryColor" parent="Widget.Design.TextInputLayout">
+        <item name="helperTextEnabled">true</item>
+        <item name="colorControlActivated">@color/text_input_field_blue_color</item>
+        <item name="android:textColorHint">@color/text_input_field_blue_color</item>
+        <item name="android:textColor">@color/text_input_field_blue_color</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="counterOverflowTextAppearance">@style/TextCounterAppearanceDarkStyle</item>
+        <item name="counterTextAppearance">@style/TextCounterOverflowAppearanceDarkStyle</item>
+    </style>
+
+    <style name="TextInputLayoutWithGrayHint" parent="TextInputLayoutWithPrimaryColor">
+        <item name="android:textColorHint">@color/text_input_edit_text_color</item>
+    </style>
+
+    <style name="TextInputEditText" parent="Widget.AppCompat.EditText">
+        <item name="colorControlNormal">@color/text_input_field_blue_line_color</item>
+        <item name="backgroundTint">@color/text_input_field_blue_line_color</item>
+        <item name="android:textColor">@color/text_input_edit_text_color</item>
+        <!--        <item name="android:textAlignment">textEnd</item>-->
+    </style>
+
+    <style name="EdittextQuestionBackground" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">52dp</item>
+        <item name="android:textColor">@color/text_input_edit_text_color</item>
+        <!--        <item name="android:textAlignment">textEnd</item>-->
+    </style>
+
+    <style name="TextCounterAppearanceDarkStyle" parent="TextAppearance.Design.Counter">
+        <item name="android:textColor">@color/text_input_field_blue_color</item>
+    </style>
+
+    <style name="TextCounterOverflowAppearanceDarkStyle" parent="TextAppearance.Design.Counter.Overflow">
+        <item name="android:textColor">@color/text_input_field_blue_color</item>
+    </style>
+
+    <style name="ButtonParent">
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="BlueWhiteButtonWithBlueBorder" parent="ButtonParent">
+        <item name="android:background">@drawable/view_white_button_with_border</item>
+        <item name="android:textColor">@drawable/view_white_button_text_selector</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+
+
+</resources>
