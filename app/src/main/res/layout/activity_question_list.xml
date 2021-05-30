@@ -16,11 +16,11 @@
         tools:listitem="@layout/row_question_recycler" />
 
     <TextView
-        android:visibility="gone"
-        android:layout_gravity="center"
         android:id="@+id/emptyStateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/list_empty_state"/>
+        android:layout_gravity="center"
+        android:text="@string/list_empty_state"
+        android:visibility="gone" />
 
 </LinearLayout>

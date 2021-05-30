@@ -9,6 +9,7 @@ class QuestionsModel
     var optB: String? = null,
     var optC: String? = null,
     var optD: String? = null,
-    var answer: String? = null
+    var answer: String? = null,
+    var selectedQuestions: Boolean? = null,
 )
     

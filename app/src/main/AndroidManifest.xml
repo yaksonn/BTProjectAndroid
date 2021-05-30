@@ -23,6 +23,8 @@
         <activity android:name=".ui.questions.AddQuestionActivity" />
         <activity android:name=".ui.questions.QuestionListActivity" />
         <activity android:name=".ui.questions.EditQuestionActivity" />
+        <activity android:name=".ui.exam.CreateExamActivity" />
+        <activity android:name=".ui.exam.ExamSettings" />
     </application>
 
 </manifest>

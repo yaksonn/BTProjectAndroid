@@ -7,21 +7,21 @@ import android.database.sqlite.SQLiteOpenHelper
 import com.yakson.btprojectandroid.model.UserModel
 import java.util.ArrayList
 
-class DBUsers(context: Context?) :
-    SQLiteOpenHelper(context, "users.db", null, 1) {
+class DBUsersHelper(context: Context?) :
+    SQLiteOpenHelper(context, "users.dataBase", null, 1) {
 
-    override fun onCreate(db: SQLiteDatabase?) {
+    override fun onCreate(dataBase: SQLiteDatabase?) {
         val createTableStatement =
             "CREATE TABLE USERS(ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "USERNAME TEXT," +
                     "EMAIL TEXT," +
                     "PHONE TEXT," +
                     "PASSWORD TEXT);"
-        db!!.execSQL(createTableStatement)
+        dataBase!!.execSQL(createTableStatement)
     }
 
     override fun onUpgrade(
-        db: SQLiteDatabase,
+        dataBase: SQLiteDatabase,
         oldVersion: Int,
         newVersion: Int
     ) {
@@ -29,22 +29,22 @@ class DBUsers(context: Context?) :
 
 
     fun addNewUser(userModel: UserModel): Boolean {
-        val db = this.writableDatabase
-        val cv = ContentValues()
-        cv.put("USERNAME", userModel.userNameSurname)
-        cv.put("EMAIL", userModel.userEmail)
-        cv.put("PHONE", userModel.userPhoneNumber)
-        cv.put("PASSWORD", userModel.userPassword)
-        val insert = db.insert("USERS", null, cv)
-        db.close()
+        val dataBase = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("USERNAME", userModel.userNameSurname)
+        contentValues.put("EMAIL", userModel.userEmail)
+        contentValues.put("PHONE", userModel.userPhoneNumber)
+        contentValues.put("PASSWORD", userModel.userPassword)
+        val insert = dataBase.insert("USERS", null, contentValues)
+        dataBase.close()
         return insert != -1L
     }
 
     fun checkUsersFromDb(): ArrayList<UserModel>? {
         val users: ArrayList<UserModel> = ArrayList()
         val query = "SELECT * FROM USERS;"
-        val db = this.readableDatabase
-        val cursor = db.rawQuery(query, null)
+        val dataBase = this.readableDatabase
+        val cursor = dataBase.rawQuery(query, null)
         if (cursor.moveToFirst()) {
             do {
                 val userId = cursor.getInt(0)
@@ -57,7 +57,7 @@ class DBUsers(context: Context?) :
             } while (cursor.moveToNext())
         }
         cursor.close()
-        db.close()
+        dataBase.close()
         return users
     }
 }

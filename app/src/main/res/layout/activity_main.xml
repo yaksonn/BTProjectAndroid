@@ -95,6 +95,7 @@
         android:layout_marginBottom="24dp"
         android:gravity="center"
         android:text="@string/logOut"
+        android:onClick="mainActivityButtonClicks"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/versionInfoTextView"
         app:layout_constraintEnd_toEndOf="parent"

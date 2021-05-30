@@ -2,16 +2,17 @@ package com.yakson.btprojectandroid.ui.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.yakson.btprojectandroid.R
-import com.yakson.btprojectandroid.helper.DBQuestions
+import com.yakson.btprojectandroid.helper.DBQuestionsHelper
 import com.yakson.btprojectandroid.model.QuestionsModel
 import com.yakson.btprojectandroid.ui.questions.EditQuestionActivity
 import com.yakson.btprojectandroid.utility.negativeButton
@@ -21,7 +22,8 @@ import java.util.*
 
 class AdapterExamQuestions constructor(
     private val questionsArrayList: ArrayList<QuestionsModel>,
-    private val context: Context
+    private val context: Context,
+    private val isFromQuestion: Boolean
 ) : RecyclerView.Adapter<AdapterExamQuestions.ViewHolder>() {
 
 
@@ -38,10 +40,10 @@ class AdapterExamQuestions constructor(
         return questionsArrayList.size
     }
 
-    @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: AdapterExamQuestions.ViewHolder, position: Int) {
         val item = questionsArrayList[position]
         item.let { questionItem ->
+
             holder.question?.text = questionItem.question
             holder.optA?.text = questionItem.optA
             holder.optB?.text = questionItem.optB
@@ -49,11 +51,31 @@ class AdapterExamQuestions constructor(
             holder.optD?.text = questionItem.optD
             holder.answer?.text = questionItem.answer
 
+            if (isFromQuestion) {
+                holder.deleteQuestion?.visibility = View.GONE
+                holder.editQuestion?.visibility = View.GONE
+                holder.linearLayoutQuestion?.setOnClickListener {
+                    if (item.selectedQuestions == true) {
+                        holder.linearLayoutQuestion?.background =
+                            ContextCompat.getColor(context, R.color.white).toDrawable()
+                        item.selectedQuestions = false
+                    } else {
+                        holder.linearLayoutQuestion?.background =
+                            ContextCompat.getColor(context, R.color.bgBlueButtonPressedColor)
+                                .toDrawable()
+                        item.selectedQuestions = true
+                    }
+                }
+            } else {
+                holder.deleteQuestion?.visibility = View.VISIBLE
+                holder.editQuestion?.visibility = View.VISIBLE
+            }
+
             holder.deleteQuestion?.setOnClickListener {
                 context.showAlertDialog {
                     setMessage(context.getString(R.string.dialog_delete_message))
                     positiveButton(text = context.getString(R.string.delete)) {
-                        val dbQuestions = DBQuestions(context)
+                        val dbQuestions = DBQuestionsHelper(context)
                         questionsArrayList.removeAt(position)
                         notifyItemRemoved(position)
                         dbQuestions.deleteQuestion(item.questionId)
@@ -67,6 +89,7 @@ class AdapterExamQuestions constructor(
                 intent.putExtra("questionId", item.questionId)
                 context.startActivity(intent)
             }
+
         }
 
     }
@@ -74,6 +97,7 @@ class AdapterExamQuestions constructor(
 
     inner class ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
+        var linearLayoutQuestion: LinearLayout? = null
         var question: TextView? = null
         var optA: TextView? = null
         var optB: TextView? = null
@@ -84,6 +108,7 @@ class AdapterExamQuestions constructor(
         var deleteQuestion: ImageView? = null
 
         init {
+            linearLayoutQuestion = itemView.findViewById(R.id.linearLayoutQuestion)
             question = itemView.findViewById(R.id.questionTextView)
             optA = itemView.findViewById(R.id.optATextView)
             optB = itemView.findViewById(R.id.optBTextView)

@@ -5,6 +5,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="bgBlueButtonColor">#2E77EE</color>
+    <color name="bg_selected_item">#3E0257E4</color>
     <color name="bgBlueButtonPressedColor">#1376F7</color>
     <color name="text_input_field_blue_color">#2699FB</color>
     <color name="text_input_field_blue_line_color">#2699FB</color>

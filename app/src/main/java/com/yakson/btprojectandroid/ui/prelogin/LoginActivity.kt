@@ -1,19 +1,18 @@
 package com.yakson.btprojectandroid.ui.prelogin
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.yakson.btprojectandroid.R
 import com.yakson.btprojectandroid.model.UserModel
-import com.yakson.btprojectandroid.helper.DBUsers
+import com.yakson.btprojectandroid.helper.DBUsersHelper
 import com.yakson.btprojectandroid.ui.MainActivity
 import com.yakson.btprojectandroid.utility.toast
 import com.yakson.btprojectandroid.utility.userID
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.yakson.btprojectandroid.utility.userNAME
 import java.util.*
 
 class LoginActivity : AppCompatActivity() {
@@ -43,29 +42,37 @@ class LoginActivity : AppCompatActivity() {
         when (view?.id) {
             R.id.loginButton -> {
                 if (checkField()) {
-                    val db = DBUsers(this@LoginActivity)
+                    val db = DBUsersHelper(this@LoginActivity)
                     val users: ArrayList<UserModel>? = db.checkUsersFromDb()
-                    users?.forEach { userModel ->
-                        if (userModel.userEmail.equals(userNameEditText?.text.toString().trim())
-                            && userModel.userPassword == passwordEditText?.text.toString()
-                        ) {
-                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                            userID = userModel.userId
-                            startActivity(intent)
-                            return
+                    if (users?.size!! > 0) {
+                        users.forEach { userModel ->
+                            if (userModel.userEmail.equals(userNameEditText?.text.toString().trim())
+                                && userModel.userPassword == passwordEditText?.text.toString()
+                            ) {
+                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                userID = userModel.userId
+                                userNAME = userModel.userNameSurname
+                                startActivity(intent)
+                                return
+                            } else {
+                                toast(getString(R.string.login_error))
+                            }
                         }
+                    }else{
+                        toast("Kullanıcı adı bulunamadı")
                     }
+
                     loginAttempt = loginAttempt?.plus(1)
 
                     if (loginAttempt!! >= 3) {
                         toast("3 defa hatalı giriş yapıldı")
-                        finish()
+                        val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+                        startActivity(intent)
                     }
 
                 }
             }
             R.id.registerButton -> {
-
                 val intentRegister = Intent(this@LoginActivity, RegisterActivity::class.java)
                 startActivity(intentRegister)
             }
@@ -85,7 +92,7 @@ class LoginActivity : AppCompatActivity() {
             result = false
         }
         if (passwordEditText?.text.toString().isEmpty()) {
-            passwordTextInputLayout?.error = "getString(R.string.signup_error_password)"
+            passwordTextInputLayout?.error = getString(R.string.login_error_password)
             result = false
         }
         return result

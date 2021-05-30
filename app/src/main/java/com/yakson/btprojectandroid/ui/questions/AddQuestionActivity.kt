@@ -10,7 +10,7 @@ import android.widget.RadioGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.yakson.btprojectandroid.R
-import com.yakson.btprojectandroid.helper.DBQuestions
+import com.yakson.btprojectandroid.helper.DBQuestionsHelper
 import com.yakson.btprojectandroid.model.QuestionsModel
 import com.yakson.btprojectandroid.ui.MainActivity
 import com.yakson.btprojectandroid.utility.toast
@@ -52,7 +52,7 @@ class AddQuestionActivity : AppCompatActivity() {
             R.id.saveQuestionButton -> {
 
                 if (checkQuestionAndOptions()){
-                    val dbQuestions = DBQuestions(this@AddQuestionActivity)
+                    val dbQuestions = DBQuestionsHelper(this@AddQuestionActivity)
                     val question = QuestionsModel(
                         -1, userID, entryQuestionEditText?.text.toString().trim(),
                         optAEditText?.text.toString().trim(),

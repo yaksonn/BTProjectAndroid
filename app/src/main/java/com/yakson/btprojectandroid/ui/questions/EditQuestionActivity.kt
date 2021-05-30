@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.yakson.btprojectandroid.R
-import com.yakson.btprojectandroid.helper.DBQuestions
+import com.yakson.btprojectandroid.helper.DBQuestionsHelper
 import com.yakson.btprojectandroid.model.QuestionsModel
 import com.yakson.btprojectandroid.ui.MainActivity
 import com.yakson.btprojectandroid.utility.toEditable
@@ -51,8 +51,8 @@ class EditQuestionActivity : AppCompatActivity() {
             val radioButton = group.findViewById<View>(checkedId) as RadioButton
             questionAnswer = radioButton.text.toString()
         }
-        val dbQuestions = DBQuestions(this@EditQuestionActivity)
-        questionModel = dbQuestions.getAQuestionWID(questionId!!)
+        val dbQuestions = DBQuestionsHelper(this@EditQuestionActivity)
+        questionModel = dbQuestions.getQuestionWithId(questionId!!)
 
         entryQuestionEditText?.text = questionModel?.question?.toEditable()
         optAEditText?.text = questionModel?.optA?.toEditable()
@@ -67,7 +67,7 @@ class EditQuestionActivity : AppCompatActivity() {
         when (view?.id) {
             R.id.saveQuestionButton -> {
                 if (checkQuestionAndOptions()) {
-                    val dbQuestions = DBQuestions(this@EditQuestionActivity)
+                    val dbQuestions = DBQuestionsHelper(this@EditQuestionActivity)
                     val question = QuestionsModel(
                         -1, userID, entryQuestionEditText?.text.toString().trim(),
                         optAEditText?.text.toString().trim(),

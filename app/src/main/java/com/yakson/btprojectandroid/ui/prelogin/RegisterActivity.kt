@@ -6,11 +6,11 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.yakson.btprojectandroid.R
 import com.yakson.btprojectandroid.model.UserModel
-import com.yakson.btprojectandroid.helper.DBUsers
-import com.yakson.btprojectandroid.ui.MainActivity
+import com.yakson.btprojectandroid.helper.DBUsersHelper
 import com.yakson.btprojectandroid.utility.toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.yakson.btprojectandroid.utility.userNAME
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -27,7 +27,7 @@ class RegisterActivity : AppCompatActivity() {
     private var passwordRegisterEditText: TextInputEditText? = null
     private var passwordSecondRegisterEditText: TextInputEditText? = null
 
-    private var dbUsers: DBUsers? = null
+    private var dbUsers: DBUsersHelper? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,12 +56,16 @@ class RegisterActivity : AppCompatActivity() {
             R.id.registerButton -> {
                 if (checkField()) {
                     if (checkDB()) {
-                        val intent = Intent(this@RegisterActivity, MainActivity::class.java)
+                        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                         startActivity(intent)
                         finishAffinity()
                     }
-
                 }
+            }
+            R.id.backButtonImageView -> {
+                val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                startActivity(intent)
+                finishAffinity()
             }
         }
     }
@@ -100,7 +104,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun checkDB(): Boolean {
         var result: Boolean = true
         dbUsers =
-            DBUsers(this@RegisterActivity)
+            DBUsersHelper(this@RegisterActivity)
         val users: ArrayList<UserModel>? = dbUsers!!.checkUsersFromDb()
         if (!users.isNullOrEmpty()) {
             users.forEach { userModel ->
@@ -119,14 +123,8 @@ class RegisterActivity : AppCompatActivity() {
 
         val newUser = UserModel(-1, userNameSurname, userEmail, userPhoneNumber, userPassword)
 
-//        newUser.userId = -1
-//        newUser.userNameSurname = nameRegisterEditText?.text.toString()
-//        newUser.userEmail = emailRegisterEditText?.text.toString()
-//        newUser.userPhoneNumber = phoneRegisterEditText?.text.toString()
-//        newUser.userPassword = userPassword
-
         dbUsers?.addNewUser(newUser)
-
+        userNAME = newUser.userNameSurname
         dbUsers?.checkUsersFromDb()
 
         return result

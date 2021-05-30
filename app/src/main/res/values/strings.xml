@@ -6,7 +6,11 @@
     <string name="register">Kayıt ol</string>
     <string name="logOut">Çıkış</string>
     <string name="edit">Düzenle</string>
+    <string name="save">Kaydet</string>
+    <string name="welcome">Hoş geldin</string>
     <string name="login_error_email">Lütfen kayıt olduğunuz e-posta adresini girin</string>
+    <string name="login_error_password">Lütfen şifrenizi girin.</string>
+    <string name="login_error">Email  ya da şifre hatalı.</string>
     <string name="blank_field_error">Lütfen tüm alanları eksiksiz doldurunuz.</string>
 
     <string name="answer">Cevap</string>
@@ -15,6 +19,9 @@
     <string name="edit_question">Soruyu Düzenle</string>
     <string name="get_question">Sorular</string>
     <string name="create_exam">Sınav Oluştur</string>
+    <string name="exam_time">Sınav Süresi</string>
+    <string name="question_points">Soru Puanı</string>
+    <string name="difficultly">Zorluk Seviyesi</string>
     <string name="exam_settings">Ayarlar</string>
     <string name="optA">A</string>
     <string name="optB">B</string>
@@ -40,5 +47,6 @@
     <string name="signup_error_email">Geçerli e-posta adresi girin</string>
     <string name="signup_error_password_repeat">Şifren ile uyuşmuyor</string>
     <string name="list_empty_state">Herhangi bir aktivite bulunamadı.</string>
+
 
 </resources>
