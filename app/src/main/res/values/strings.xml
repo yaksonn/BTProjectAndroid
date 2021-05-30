@@ -39,4 +39,6 @@
     <string name="signup_error_name_surname">Lütfen geçerli bir ad soyad giriniz</string>
     <string name="signup_error_email">Geçerli e-posta adresi girin</string>
     <string name="signup_error_password_repeat">Şifren ile uyuşmuyor</string>
+    <string name="list_empty_state">Herhangi bir aktivite bulunamadı.</string>
+
 </resources>

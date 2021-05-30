@@ -2,6 +2,8 @@ package com.yakson.btprojectandroid.ui.questions
 
 import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +15,7 @@ import com.yakson.btprojectandroid.ui.adapter.AdapterExamQuestions
 class QuestionListActivity : AppCompatActivity() {
 
     private var questionRecyclerView: RecyclerView? = null
+    private var emptyStateTextView: TextView? = null
     private var adapterExamQuestions: AdapterExamQuestions? = null
     private var questionArrayList: ArrayList<QuestionsModel>? = null
 
@@ -29,10 +32,18 @@ class QuestionListActivity : AppCompatActivity() {
         val db = DBQuestions(this@QuestionListActivity)
         questionArrayList = db.getQuestions()
         fillRecycler(questionArrayList)
+        if (questionArrayList?.size == 0) {
+            emptyStateTextView?.visibility = View.VISIBLE
+            questionRecyclerView?.visibility = View.GONE
+        } else {
+            emptyStateTextView?.visibility = View.GONE
+            questionRecyclerView?.visibility = View.VISIBLE
+        }
     }
 
     private fun fillRecycler(questionArray: ArrayList<QuestionsModel>?) {
-        adapterExamQuestions = questionArray?.let { AdapterExamQuestions(it, this@QuestionListActivity) }
+        adapterExamQuestions =
+            questionArray?.let { AdapterExamQuestions(it, this@QuestionListActivity) }
         questionRecyclerView?.adapter = adapterExamQuestions
         adapterExamQuestions?.notifyDataSetChanged()
     }
