@@ -19,6 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="12dp"
             android:layout_weight="0.2"
             android:onClick="createExamActivityButtonClicks"
             android:src="@drawable/ic_back" />
@@ -33,6 +34,16 @@
             android:text="@string/create_exam"
             android:textColor="@color/title_text_color"
             android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/settingsImageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="12dp"
+            android:layout_weight="0.2"
+            android:onClick="createExamActivityButtonClicks"
+            android:src="@drawable/ic_settings" />
     </LinearLayout>
 
     <LinearLayout
@@ -48,8 +59,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/row_question_recycler"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            tools:listitem="@layout/row_question_recycler" />
 
         <TextView
             android:id="@+id/emptyStateTextView"

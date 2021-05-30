@@ -1,5 +1,6 @@
 package com.yakson.btprojectandroid.ui.exam
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -9,9 +10,7 @@ import com.yakson.btprojectandroid.R
 import com.yakson.btprojectandroid.helper.DBQuestionsHelper
 import com.yakson.btprojectandroid.model.QuestionsModel
 import com.yakson.btprojectandroid.ui.adapter.AdapterExamQuestions
-import com.yakson.btprojectandroid.utility.toast
-import java.io.File
-import java.io.FileOutputStream
+import com.yakson.btprojectandroid.ui.prelogin.LoginActivity
 import java.util.*
 
 class CreateExamActivity : AppCompatActivity() {
@@ -49,8 +48,9 @@ class CreateExamActivity : AppCompatActivity() {
                 onBackPressed()
                 finish()
             }
-            R.id.createExamButton -> {
-
+            R.id.settingsImageView -> {
+                val intent = Intent(this@CreateExamActivity, ExamSettings::class.java)
+                startActivity(intent)
             }
         }
     }
