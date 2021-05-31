@@ -33,9 +33,9 @@ class ExamSettings : AppCompatActivity() {
         selectDifficultlySeekBar = findViewById(R.id.selectDifficultlySeekBar)
         difficultlyValueTextView = findViewById(R.id.difficultlyValueTextView)
 
-        examTime?.text = sharedPreferences?.getString("examTime", "30")?.toEditable()
+        examTime?.text = sharedPreferences?.getString("examTime", "40")?.toEditable()
         examQuestionPoints?.text =
-            sharedPreferences?.getString("examQuestionPoints", "5")?.toEditable()
+            sharedPreferences?.getString("examQuestionPoints", "10")?.toEditable()
         difficultlyValueTextView?.text =
             sharedPreferences?.getInt("difficultlyValueTextView", 1).toString().toEditable()
 

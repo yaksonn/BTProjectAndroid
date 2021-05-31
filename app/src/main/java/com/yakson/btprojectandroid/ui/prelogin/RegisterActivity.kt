@@ -59,6 +59,8 @@ class RegisterActivity : AppCompatActivity() {
                         val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                         startActivity(intent)
                         finishAffinity()
+                        toast("Kullanıcı kaydı başarılı.Şimdi giriş yapabilirsin.")
+
                     }
                 }
             }
